@@ -1,10 +1,14 @@
 import React from 'react'
-import TodoWrapper from './TodoWrapper'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const Todo = () => {
+const Todo = ({task}) => {
     return (
-        <div>
-          
+        <div className='todo'>
+            <p className='todos'>{task.task}</p>
+            <FontAwesomeIcon icon={faPenToSquare} />
+            <FontAwesomeIcon icon={faTrash} />
         </div>
     )
 }
