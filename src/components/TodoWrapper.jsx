@@ -10,8 +10,13 @@ const TodoWrapper = () => {
     const addTodo = todo => {
         setTodos([...todos, { id: uuidv4(), task: todo, completed: false, isEditing: false }])
     }
+
     const toggleComplete = id => {
         setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+    }
+
+    const deleteTodo = id => {
+        setTodos(todos.filter(todo => todo.id !== id))
     }
 
     return (
@@ -19,7 +24,7 @@ const TodoWrapper = () => {
             <h1>Add tasks!</h1>
             <TodoForm addTodo={addTodo} />
             {todos.map((todo, index) => (
-                <Todo task={todo} key={index} toggleComplete={toggleComplete} />
+                <Todo task={todo} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo}/>
             ))}
         </div>
     )
